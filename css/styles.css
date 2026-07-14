@@ -547,7 +547,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .feature-icon.diary { background: rgba(20, 128, 250, 0.1); color: var(--macro-protein); }
 .feature-icon.barcode { background: rgba(250, 140, 13, 0.1); color: var(--macro-fat); }
 .feature-icon.ai { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
-.feature-icon.progress { background: rgba(239, 41, 56, 0.08); color: var(--macro-carbs); }
+.feature-icon.health { background: rgba(255, 69, 58, 0.1); color: #ff453a; }
 .feature-icon.shopping { background: rgba(60, 175, 80, 0.12); color: var(--primary-deep); }
 
 .feature-card h3 {
@@ -764,7 +764,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 
 .faq-item.open .faq-answer {
-  max-height: 200px;
+  max-height: 320px;
 }
 
 .faq-answer p {
