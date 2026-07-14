@@ -1,70 +1,5 @@
 (function () {
-  const STORAGE_KEY = "tufit-lang";
   const APP_STORE_URL = ""; // Set your App Store URL here when available
-
-  function detectLanguage() {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "de" || stored === "en") return stored;
-    const lang = navigator.language || navigator.userLanguage || "en";
-    return lang.toLowerCase().startsWith("de") ? "de" : "en";
-  }
-
-  let currentLang = detectLanguage();
-
-  function t(key) {
-    return translations[currentLang][key] || translations.en[key] || key;
-  }
-
-  function applyTranslations() {
-    document.documentElement.lang = currentLang;
-
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      const value = t(key);
-      if (el.hasAttribute("data-i18n-html")) {
-        el.innerHTML = value;
-      } else {
-        el.textContent = value;
-      }
-    });
-
-    document.title = t("meta.title");
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute("content", t("meta.description"));
-
-    document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
-      const lang = btn.getAttribute("data-lang-btn");
-      btn.classList.toggle("active", lang === currentLang);
-      btn.setAttribute("aria-pressed", lang === currentLang ? "true" : "false");
-    });
-
-    document.querySelectorAll("[data-app-store]").forEach((el) => {
-      const useSoon = !APP_STORE_URL;
-      const key = el.getAttribute("data-i18n") || "hero.cta";
-      const soonKey = key === "cta.button" ? "hero.cta.soon" : "hero.cta.soon";
-      el.textContent = t(useSoon ? soonKey : key);
-    });
-
-    document.querySelectorAll(".lang-block").forEach((block) => {
-      const show = block.classList.contains(`lang-${currentLang}`);
-      block.hidden = !show;
-    });
-
-    document.dispatchEvent(new CustomEvent("tufit:langchange", { detail: { lang: currentLang } }));
-  }
-
-  function setLanguage(lang) {
-    if (lang !== "de" && lang !== "en") return;
-    currentLang = lang;
-    localStorage.setItem(STORAGE_KEY, lang);
-    applyTranslations();
-  }
-
-  function setupLanguageToggle() {
-    document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
-      btn.addEventListener("click", () => setLanguage(btn.getAttribute("data-lang-btn")));
-    });
-  }
 
   function setupMobileNav() {
     const toggle = document.querySelector(".nav-toggle");
@@ -136,6 +71,7 @@
         link.href = "#download";
         link.setAttribute("aria-disabled", "true");
         link.classList.add("disabled");
+        link.textContent = "Coming to the App Store";
         link.addEventListener("click", (e) => e.preventDefault());
       }
     });
@@ -156,14 +92,10 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     setupAppStoreLinks();
-    applyTranslations();
-    setupLanguageToggle();
     setupMobileNav();
     setupHeaderScroll();
     setupReveal();
     setupFaq();
     setupSmoothScroll();
   });
-
-  window.TuFitSite = { setLanguage, t, getLanguage: () => currentLang };
 })();
