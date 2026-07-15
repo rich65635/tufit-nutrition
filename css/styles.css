@@ -274,7 +274,22 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   color: rgba(255, 255, 255, 0.4);
 }
 
-/* ── Phone Mockup ── */
+/* ── Hero visual ── */
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image {
+  width: min(100%, 520px);
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Phone Mockup (legacy) ── */
 
 .hero-phone {
   display: flex;
@@ -961,6 +976,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   }
 
   .hero-subtitle { margin-inline: auto; }
+  .hero-visual { order: -1; }
+  .hero-image { width: min(100%, 400px); }
   .hero-phone { order: -1; }
   .phone-frame { transform: none; animation: none; }
 
