@@ -274,7 +274,24 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   color: rgba(255, 255, 255, 0.4);
 }
 
-/* ── Hero visual ── */
+/* ── Hero phone ── */
+
+.hero-phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+.hero-phone-img {
+  width: min(100%, 280px);
+  height: auto;
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
+  transform: rotateY(-6deg) rotateX(2deg);
+  animation: phoneFloat 6s ease-in-out infinite;
+}
+
+/* ── Hero visual (legacy) ── */
 
 .hero-visual {
   display: flex;
@@ -976,9 +993,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   }
 
   .hero-subtitle { margin-inline: auto; }
-  .hero-visual { order: -1; }
-  .hero-image { width: min(100%, 400px); }
   .hero-phone { order: -1; }
+  .hero-phone-img { transform: none; animation: none; width: min(100%, 240px); }
+  .hero-visual { order: -1; }
   .phone-frame { transform: none; animation: none; }
 
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
