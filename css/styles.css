@@ -284,7 +284,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 
 .hero-phone-img {
-  width: min(100%, 280px);
+  width: min(100%, 300px);
   height: auto;
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
   transform: rotateY(-6deg) rotateX(2deg);
