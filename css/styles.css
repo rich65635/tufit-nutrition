@@ -287,8 +287,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   width: min(100%, 300px);
   height: auto;
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
-  transform: rotateY(-6deg) rotateX(2deg);
+  transform: rotateY(-6deg) rotateX(2deg) translateZ(0);
   animation: phoneFloat 6s ease-in-out infinite;
+  backface-visibility: hidden;
 }
 
 /* ── Hero visual (legacy) ── */
@@ -994,7 +995,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 
   .hero-subtitle { margin-inline: auto; }
   .hero-phone { order: -1; }
-  .hero-phone-img { transform: none; animation: none; width: min(100%, 240px); }
+  .hero-phone-img { transform: none; animation: none; width: min(100%, 260px); }
   .hero-visual { order: -1; }
   .phone-frame { transform: none; animation: none; }
 
